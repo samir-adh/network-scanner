@@ -1,30 +1,63 @@
 # Network Scanner
 
+A simple network scanning CLI tool written in C.
+
+## Features
+
+- Scan IP addresses and check open ports
+- Support for network ranges with subnet masks
+- Configurable port scanning
+- Default scanning on ports 80 and 443
+- Excludes reserved addresses (network and broadcast)
+
+## Usage
+
+```bash
+# Scan a specific IP on default ports (80, 443)
+./network-scanner 192.168.1.1
+
+# Scan a network range
+./network-scanner 192.168.1.0/24
+
+# Specify custom ports
+./network-scanner 192.168.1.1 -p 22,80,443,8080
+```
+
+## Building
+
+```bash
+gcc -o network-scanner *.c
+```
+
+## Note
+
+This is a learning project. For production use, consider established tools like `nmap`.
+
 ## TO-DO List
 
-### Importance élevée
+### High Priority
 
-- [X] Accepter les arguments en ligne de commande
-- [X] Support pour netmask -> Mettre la première IP à "zéro"
-- [X] Traîter les arguments en ligne de commande
-  - [X] Scanner le réseau associé à une adresse IP
-  - [X] Spécifier les ports à scanner
-  - [X] Scanner une IP spécifique
-- [X] Itérer correctement sur les adresses IP
-- [X] Fonction qui scanne une liste de ports
+- [X] Accept command-line arguments
+- [X] Support for netmask -> Set first IP to "zero"
+- [X] Process command-line arguments
+  - [X] Scan the network associated with an IP address
+  - [X] Specify ports to scan
+  - [X] Scan a specific IP
+- [X] Correctly iterate over IP addresses
+- [X] Function that scans a list of ports
 
-### Importance moyenne
+### Medium Priority
 
-- [X] Exclure les addresse réservées (ex: 192.168.31.0 et 192.168.31.255)
-- [X] Scan d'adresse part défaut sur les port 80, 443
-- [X] Commenter le code (tester ce que ça donne avec ChatGPT)
-- [ ] Retourner des listes pour le resultat
-- [ ] Ecrire un rapport de scan
+- [X] Exclude reserved addresses (e.g., 192.168.31.0 and 192.168.31.255)
+- [X] Default address scan on ports 80, 443
+- [X] Comment the code
+- [ ] Return lists for results
+- [ ] Write a scan report
 
-### Importance faible
+### Low Priority
 
-- [ ] Option pour régler le timeout
+- [ ] Option to set timeout
 - [ ] Multi-process
-- [ ] Fonction ping_address
-- [X] Fix l'erreur avec "0.0.0.0"
-- [ ] Ecrire les resultats du scan dans un JSON
+- [ ] ping_address function
+- [X] Fix error with "0.0.0.0"
+- [ ] Write scan results to JSON
